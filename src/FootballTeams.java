@@ -67,6 +67,19 @@ public class FootballTeams extends Employees {
     }
 
     public void deleteFootballTeam() {
+        String sqlDeleteFootballTeam = "delete " +
+                "from \"football\".football_teams ft2 " +
+                "where ft2.id in (select ft.id " +
+                "                 from \"football\".football_teams ft " +
+                "                          left outer join \"football\".employees e on ft.id = e.football_team_id " +
+                "                 group by ft.name, ft.id " +
+                "    having count(e.job_title) = 0)";
+        try {
+            PreparedStatement preparedStatement = connection().prepareStatement(sqlDeleteFootballTeam);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 }

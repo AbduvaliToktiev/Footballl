@@ -1,6 +1,6 @@
 public enum JobTitle {
     JOB_TITLE_PLAYER("Игрок"),
-    JOB_TITLE_COACH("Тренер"),
+    JOB_TITLE_COACH("Тренер" ),
     JOB_TITLE_OWNER("Владелец команды");
 
     private final String nameTitle;
@@ -19,4 +19,6 @@ public enum JobTitle {
                 "nameTitle='" + nameTitle + '\'' +
                 '}';
     }
+
+
 }

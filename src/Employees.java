@@ -1,7 +1,6 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class Employees extends Connect {
     private Integer id;
@@ -48,7 +47,8 @@ public class Employees extends Connect {
                 "from \"football\".employees e " +
                 "inner join \"football\".football_teams ft on ft.id = e.football_team_id " +
                 "where job_title = 'Игрок' " +
-                "group by ft.name ";
+                "group by ft.name " +
+                "order by count(e.fio) desc";
         try {
             Statement statement = connection().createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -95,4 +95,7 @@ public class Employees extends Connect {
         }
     }
 
+    public void deletePlayerSalaryBig() {
+
+    }
 }
